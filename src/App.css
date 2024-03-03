@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-image: url("https://media.discordapp.net/attachments/1213605380219736204/1213898313104097310/Untitled23_20240303121818.png?ex=65f725e6&is=65e4b0e6&hm=515100e5fcc8cf6c66bce11ed09f2717647ffa8bb42ccd4924d24e6cd063c9ae&=&width=1494&height=1118");
+  color: #a7d68d;
+  font-family: Helvetica, Arial;
+  font-size: 3vmin;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-image: url("https://media.discordapp.net/attachments/1213605380219736204/1213898313104097310/Untitled23_20240303121818.png?ex=65f725e6&is=65e4b0e6&hm=515100e5fcc8cf6c66bce11ed09f2717647ffa8bb42ccd4924d24e6cd063c9ae&=&width=1494&height=1118");
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: ojuju(10px + 2vmin);
+  color: #585ca2;
+}
+
+.hidden {
+  display: none;
+}
+
+.background {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center center;
+  /*filter: blur(8em) opacity(0.6);*/
+  position: absolute;
+}
+
+.main-wrapper {
+  padding-top: 45px;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  position: relative;
+  width: 80%;
+  z-index: 1;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.main-container {
+  flex: 1;
+}
+
+.now-playing__name {
+  font-size: 1.5em;
+  margin-bottom: 0.2em;
+  color: #a7d68d;
+  text-align: center;
+}
+
+.now-playing__artist {
+  margin-bottom: 1em;
+  color: #a7d68d;
+}
+
+.now-playing__status {
+  margin-bottom: 1em;
+}
+
+.now-playing__cover {
+  border-radius: 8px;
+  float: left;
+  margin-right: 10px;
+  text-align: right;
+  width: 300px;
+  height: 300px;
+}
+
+.now-playing__side {
+  margin-left: 2%;
+  width: 45%;
+}
+
+.btn-spotify {
+  background-color: #aea0f8;
+  border-radius: 28px;
+  border: 5px solid black;
+  border-style: inset;
+  display: inline-block;
+  cursor: pointer;
+  color: #a7d68d;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 16px 31px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #2f6627;
+}
+.btn-spotify:active {
+  position: relative;
+  top: 1px;
+}
+
+img {
+  background: transparent;
+}
+.login {
+  background-color: #aea0f8;
+  background-size: 150px;
+  border-style: dotted;
+  color: #a7d68d;
+}
+.myButton {
+  color: #2f6627;
+}
