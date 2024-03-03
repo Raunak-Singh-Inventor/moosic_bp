@@ -20,58 +20,6 @@ function WebPlayback(props) {
   const [player, setPlayer] = useState(undefined);
   const [current_track, setTrack] = useState(track);
 
-  const videoRef = useRef(<HTMLVideoElement></HTMLVideoElement>);
-  const [emotion, setEmotion] = useState("");
-
-  const loadModels = () => {
-    Promise.all([
-      faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
-      faceapi.nets.faceLandmark68Net.loadFromUri("/models"),
-      faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
-      faceapi.nets.faceExpressionNet.loadFromUri("/models"),
-    ]).then(() => {
-      faceDetection();
-    });
-  };
-
-  const startVideo = () => {
-    console.log("startVideo in");
-    navigator.mediaDevices
-      .getUserMedia({ video: true })
-      .then((currentStream) => {
-        videoRef.current.srcObject = currentStream;
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
-  const faceDetection = async () => {
-    setInterval(async () => {
-      const detections = await faceapi
-        .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
-        .withFaceLandmarks()
-        .withFaceExpressions();
-      console.log(detections[0].expressions);
-
-      let maxExpression = "";
-      let maxProbability = -1;
-
-      for (const expression in detections[0].expressions) {
-        const probability = detections[0].expressions[expression];
-
-        if (probability > maxProbability) {
-          maxProbability = probability;
-          maxExpression = expression;
-        }
-      }
-      console.log(maxExpression);
-      setEmotion(maxExpression);
-
-      // Process or handle detections here
-    }, 1000); // Adjust the interval (in milliseconds) as needed
-  };
-
   async function searchSongsByGenre(genre) {
     try {
       const response = await axios.get("https://api.spotify.com/v1/search", {
@@ -147,7 +95,7 @@ function WebPlayback(props) {
         // surprise - surprise
         // neutral - lofi
         // angry - bon jovi
-        searchSongsByGenre("happy").then((response) =>
+        searchSongsByGenre(props.emotion).then((response) =>
           queueTrack(response[0].uri, props.token)
             .then((result) => {
               console.log("Success:", result);
@@ -164,16 +112,6 @@ function WebPlayback(props) {
 
       player.connect();
     };
-  }, []);
-
-  useEffect(() => {
-    const initializeVideo = async () => {
-      await startVideo();
-
-      videoRef && loadModels();
-    };
-
-    initializeVideo();
   }, []);
 
   if (!is_active) {
@@ -215,11 +153,6 @@ function WebPlayback(props) {
                 {is_paused ? "PLAY" : "PAUSE"}
               </button>
             </div>
-          </div>
-        </div>
-        <div>
-          <div>
-            <video crossOrigin="anonymous" ref={videoRef} autoPlay></video>
           </div>
         </div>
       </div>

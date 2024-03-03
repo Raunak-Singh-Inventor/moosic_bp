@@ -9,9 +9,12 @@ body {
   height: 100%;
 }
 
-body {
+body,html {
   background-image: url("https://media.discordapp.net/attachments/1213605380219736204/1213898313104097310/Untitled23_20240303121818.png?ex=65f725e6&is=65e4b0e6&hm=515100e5fcc8cf6c66bce11ed09f2717647ffa8bb42ccd4924d24e6cd063c9ae&=&width=1494&height=1118");
-  color: #a7d68d;
+  background-size: cover;
+
+  color: #ffffff;
+
   font-family: Helvetica, Arial;
   font-size: 3vmin;
 }
@@ -22,12 +25,15 @@ body {
 
 .App-header {
   background-image: url("https://media.discordapp.net/attachments/1213605380219736204/1213898313104097310/Untitled23_20240303121818.png?ex=65f725e6&is=65e4b0e6&hm=515100e5fcc8cf6c66bce11ed09f2717647ffa8bb42ccd4924d24e6cd063c9ae&=&width=1494&height=1118");
+  background-size: cover;
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: ojuju(10px + 2vmin);
+  font-weight:bold;
   color: #585ca2;
 }
 
